@@ -41,43 +41,80 @@ Move the agent to the closest empty cell where it would be satisfied.
 
 # Improved Schelling Method 
 
-Contains
 
-### **Exponential Decay/Growth Model For Grid Price**
-   - Prices grow or decay exponentially based on the desirability of a location.
-   - **Implementation**:
-     - Define desirability as a function of the number of similar neighbors, amenities, or other factors.
-     - Update prices using:
-       \[
-       \text{Price}_{x,y} = \text{Price}_{x,y} \cdot e^{\beta \cdot (\text{Desirability}_{x,y} - \text{Average Desirability})}
-       \]
-       Where:
-       - \(\beta\) is a growth/decay rate.
-       - \(\text{Desirability}_{x,y}\) is a measure of how desirable the location is (e.g., based on the number of similar neighbors or amenities).
+### Exponential Decay/Growth Model for Grid Price
 
-### Wage Growth based on job opportunities
+Prices grow or decay exponentially based on the desirability of a location.
 
-\[
+**Implementation:**
+
+Define desirability as a function of the number of similar neighbors, amenities, or other factors. Update prices using:
+
+```latex
+Price_{x,y} = Price_{x,y} \cdot e^{\beta \cdot (Desirability_{x,y} - Average Desirability)}
+```
+
+Where:
+- `β` is a growth/decay rate.
+- `Desirability_{x,y}` is a measure of how desirable the location is (e.g., based on the number of similar neighbors or amenities).
+
+---
+
+### Wage Growth Based on Job Opportunities
+
+Wages are determined by proximity to economic centers:
+
+```latex
 W(x, y) = W_{\text{max}} - \alpha \cdot d(x, y)
-\]
+```
 
-where:  
-- \( W(x, y) \) is the wage at location \( (x, y) \).  
-- \( W_{\text{max}} \) is the maximum possible wage at an economic center.  
-- \( \alpha \) is a decay factor that determines how quickly wages decrease with distance.  
-- \( d(x, y) \) is the Euclidean distance from the nearest economic center, given by:
+Where:
+- `W(x, y)` is the wage at location `(x, y)`.
+- `W_{\text{max}}` is the maximum possible wage at an economic center.
+- `α` is a decay factor that determines how quickly wages decrease with distance.
+- `d(x, y)` is the Euclidean distance from the nearest economic center, given by:
 
-  \[
-  d(x, y) = \min_{(c_x, c_y) \in C} \sqrt{(x - c_x)^2 + (y - c_y)^2}
-  \]
+```latex
+d(x, y) = \min_{(c_x, c_y) \in C} \sqrt{(x - c_x)^2 + (y - c_y)^2}
+```
 
-  where \( C \) is the set of economic center coordinates.
+Where `C` is the set of economic center coordinates.
 
-- The wage is then adjusted with some randomness to simulate real-world fluctuations:
+The wage is then adjusted with some randomness to simulate real-world fluctuations:
 
-  \[
-  W'(x, y) = W(x, y) + \mathcal{N}(\mu, \sigma)
-  \]
+```latex
+W'(x, y) = W(x, y) + \mathcal{N}(\mu, \sigma)
+```
 
-  where \( \mathcal{N}(\mu, \sigma) \) represents a normal distribution with mean \( \mu \) and standard deviation \( \sigma \), capturing market fluctuations.
+Where `\mathcal{N}(\mu, \sigma)` represents a normal distribution with mean `μ` and standard deviation `σ`, capturing market fluctuations.
+
+---
+
+### Rendering in GitHub `README.md`
+
+Since GitHub does not support LaTeX rendering directly, you can use the following workarounds:
+
+1. **Use Code Blocks:**
+   Wrap your equations in triple backticks (```) with `latex` syntax highlighting to make them more readable.
+
+   Example:
+   ```latex
+   Price_{x,y} = Price_{x,y} \cdot e^{\beta \cdot (Desirability_{x,y} - Average Desirability)}
+   ```
+
+2. **Embed Images:**
+   Use an external LaTeX rendering tool (e.g., [QuickLaTeX](https://www.quicklatex.com/)) to generate images of your equations and embed them in your `README.md`.
+
+   Example:
+   ```markdown
+   ![Price Equation](https://www.quicklatex.com/cache3/ef/your_equation_image.png)
+   ```
+
+3. **Use Plain Text:**
+   Write the equations in plain text with clear formatting.
+
+   Example:
+   ```
+   Price_{x,y} = Price_{x,y} * e^(β * (Desirability_{x,y} - Average Desirability))
+   ```
 
