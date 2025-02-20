@@ -35,3 +35,11 @@ For each unsatisfied agent, calculate the distance to all empty cells.
 Move the agent to the closest empty cell where it would be satisfied.
 
 ## agents move with a probability based on their level of dissatisfaction.
+
+## try making agents have cost that added 
+
+
+# random Cost
+
+The random cost have fluctuating increase of grid value
+it incerase if more agents, decrease if more empty land.
