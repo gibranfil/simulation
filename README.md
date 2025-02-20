@@ -52,20 +52,18 @@ Prices grow or decay exponentially based on the desirability of a location.
 ### Price Update Formula
 
 The price at location \((x, y)\) is updated using the following formula:
+$$
 
-\[
 \text{Price}_{x,y} = \text{Price}_{x,y} \cdot e^{\beta \cdot (\text{Desirability}_{x,y} - \text{Average Desirability})}
-\]
 
+$$
 #### Variables:
-- **\(\beta\)**: A growth/decay rate that controls how quickly prices adjust based on desirability.
-- **\(\text{Desirability}_{x,y}\)**: A measure of how desirable the location \((x, y)\) is. This could be based on factors such as the number of similar neighbors, proximity to amenities, or other location-specific attributes.
-- **\(\text{Average Desirability}\)**: The average desirability across all locations.
+- $\beta$ : A growth/decay rate that controls how quickly prices adjust based on desirability.  
+- $\text{Desirability}_{x,y}$: A measure of how desirable the location \((x, y)\) is. This could be based on factors such as the number of similar neighbors, proximity to amenities, or other location-specific attributes.  
+- $\text{Average Desirability}$: The average desirability across all locations.
 
-#### Explanation:
-- The formula adjusts the price at each location based on how its desirability compares to the average desirability.
-- If a location's desirability is higher than the average, its price will increase exponentially.
-- If a location's desirability is lower than the average, its price will decrease exponentially.
+
+The formula adjusts the price at each location based on how its desirability compares to the average desirability. If a location's desirability is higher than the average, its price will increase exponentially. If a location's desirability is lower than the average, its price will decrease exponentially.
 
 
 
@@ -80,10 +78,10 @@ W(x, y) = W_{\text{max}} - \alpha \cdot d(x, y)
 $$
 
 where:
-- \( W(x, y) \) is the wage at location \( (x, y) \).
-- \( W_{\text{max}} \) is the maximum possible wage at an economic center.
-- \( \alpha \) is a decay factor that determines how quickly wages decrease with distance.
-- \( d(x, y) \) is the Euclidean distance from the nearest economic center, given by:
+- $W(x, y)$ is the wage at location $(x, y)$.
+- $W_{\text{max}}$ is the maximum possible wage at an economic center.
+- $\alpha $ is a decay factor that determines how quickly wages decrease with distance.
+- $d(x, y) $ is the Euclidean distance from the nearest economic center, given by:
 
 $$
 d(x, y) = \min_{(c_x, c_y) \in C} \sqrt{(x - c_x)^2 + (y - c_y)^2}
@@ -99,6 +97,6 @@ $$
 W'(x, y) = W(x, y) + \mathcal{N}(\mu, \sigma)
 $$
 
-where \( \mathcal{N}(\mu, \sigma) \) represents a normal distribution with mean \( \mu \) and standard deviation \( \sigma \), capturing market fluctuations.
+where $ \mathcal{N}(\mu, \sigma) $ represents a normal distribution with mean $\mu $ and standard deviation $\sigma$, capturing market fluctuations.
 
 
