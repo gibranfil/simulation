@@ -51,7 +51,8 @@ Prices grow or decay exponentially based on the desirability of a location.
 
 ### Price Update Formula
 
-The price at location \((x, y)\) is updated using the following formula:
+The price at location $(x, y)$ is updated using the following formula:
+
 $$
 
 \text{Price}_{x,y} = \text{Price}_{x,y} \cdot e^{\beta \cdot (\text{Desirability}_{x,y} - \text{Average Desirability})}
