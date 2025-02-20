@@ -54,10 +54,9 @@ Prices grow or decay exponentially based on the desirability of a location.
 The price at location $(x, y)$ is updated using the following formula:
 
 $$
-
-\text{Price}_{x,y} = \text{Price}_{x,y} \cdot e^{\beta \cdot (\text{Desirability}_{x,y} - \text{Average Desirability})}
-
+\text{Price}'_{x,y} = \text{Price}_{x,y} \cdot e^{\beta \cdot (\text{Desirability}_{x,y} - \text{Average Desirability})}
 $$
+
 #### Variables:
 - $\beta$ : A growth/decay rate that controls how quickly prices adjust based on desirability.  
 - $\text{Desirability}_{x,y}$: A measure of how desirable the location \((x, y)\) is. This could be based on factors such as the number of similar neighbors, proximity to amenities, or other location-specific attributes.  
