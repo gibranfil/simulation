@@ -39,7 +39,45 @@ Move the agent to the closest empty cell where it would be satisfied.
 ## try making agents have cost that added 
 
 
-# random Cost
+# Improved Schelling Method 
 
-The random cost have fluctuating increase of grid value
-it incerase if more agents, decrease if more empty land.
+Contains
+
+### **Exponential Decay/Growth Model For Grid Price**
+   - Prices grow or decay exponentially based on the desirability of a location.
+   - **Implementation**:
+     - Define desirability as a function of the number of similar neighbors, amenities, or other factors.
+     - Update prices using:
+       \[
+       \text{Price}_{x,y} = \text{Price}_{x,y} \cdot e^{\beta \cdot (\text{Desirability}_{x,y} - \text{Average Desirability})}
+       \]
+       Where:
+       - \(\beta\) is a growth/decay rate.
+       - \(\text{Desirability}_{x,y}\) is a measure of how desirable the location is (e.g., based on the number of similar neighbors or amenities).
+
+### Wage Growth based on job opportunities
+
+\[
+W(x, y) = W_{\text{max}} - \alpha \cdot d(x, y)
+\]
+
+where:  
+- \( W(x, y) \) is the wage at location \( (x, y) \).  
+- \( W_{\text{max}} \) is the maximum possible wage at an economic center.  
+- \( \alpha \) is a decay factor that determines how quickly wages decrease with distance.  
+- \( d(x, y) \) is the Euclidean distance from the nearest economic center, given by:
+
+  \[
+  d(x, y) = \min_{(c_x, c_y) \in C} \sqrt{(x - c_x)^2 + (y - c_y)^2}
+  \]
+
+  where \( C \) is the set of economic center coordinates.
+
+- The wage is then adjusted with some randomness to simulate real-world fluctuations:
+
+  \[
+  W'(x, y) = W(x, y) + \mathcal{N}(\mu, \sigma)
+  \]
+
+  where \( \mathcal{N}(\mu, \sigma) \) represents a normal distribution with mean \( \mu \) and standard deviation \( \sigma \), capturing market fluctuations.
+
