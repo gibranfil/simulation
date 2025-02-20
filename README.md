@@ -47,19 +47,27 @@ Move the agent to the closest empty cell where it would be satisfied.
 Prices grow or decay exponentially based on the desirability of a location.
 
 ### Implementation:
-Define desirability as a function of the number of similar neighbors, amenities, or other factors.
 
-Update prices using:
 
-$$
+### Price Update Formula
+
+The price at location \((x, y)\) is updated using the following formula:
+
+\[
 \text{Price}_{x,y} = \text{Price}_{x,y} \cdot e^{\beta \cdot (\text{Desirability}_{x,y} - \text{Average Desirability})}
-$$
+\]
 
-where:
-- \( \beta \) is a growth/decay rate.
-- \( \text{Desirability}_{x,y} \) is a measure of how desirable the location is (e.g., based on the number of similar neighbors or amenities).
+#### Variables:
+- **\(\beta\)**: A growth/decay rate that controls how quickly prices adjust based on desirability.
+- **\(\text{Desirability}_{x,y}\)**: A measure of how desirable the location \((x, y)\) is. This could be based on factors such as the number of similar neighbors, proximity to amenities, or other location-specific attributes.
+- **\(\text{Average Desirability}\)**: The average desirability across all locations.
 
----
+#### Explanation:
+- The formula adjusts the price at each location based on how its desirability compares to the average desirability.
+- If a location's desirability is higher than the average, its price will increase exponentially.
+- If a location's desirability is lower than the average, its price will decrease exponentially.
+
+
 
 ### Wage Growth Based on Job Opportunities
 
